@@ -10,7 +10,7 @@ const registerValidation = async (req, res, next) => {
     const { rowCount: user } = await db.query(`
         SELECT
         FROM users
-        WHERE email=$1`,
+        WHERE user_email=$1`,
         [value.email]
     );
 
