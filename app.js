@@ -3,7 +3,7 @@ const logger = require('morgan')
 const cors = require("cors");
 const dotenv = require('dotenv');
 
-const { authRouter } = require('./routes');
+const { authRouter, gamesRouter } = require('./routes');
 
 dotenv.config({ path: './.env' }); 
 
@@ -17,6 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRouter);
+app.use("api/games", gamesRouter);
 
 app.use((req, res) => {
     res.status(404).json({ message: "Not found" });

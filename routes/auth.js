@@ -7,4 +7,6 @@ authRouter.post('/register', registerValidation, authCtrl.register)
 authRouter.post('/login', loginValidation, authCtrl.login);
 authRouter.post('/logout', authenticate, authCtrl.logout);
 
+authRouter.get('/current', authenticate, authCtrl.getCurrentUser);
+
 module.exports = authRouter;

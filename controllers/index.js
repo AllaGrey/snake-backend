@@ -1,5 +1,7 @@
 const authCtrl = require('./auth');
+const gameCtrl = require('./games');
 
 module.exports = {
-    authCtrl
+    authCtrl,
+    gameCtrl
 }
