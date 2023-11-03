@@ -8,8 +8,7 @@ const addNewGame = async (userID) => {
         INSERT INTO 
             games (fk_user_id)
             values ($1)
-        RETURNING
-            fk_user_id`,
+        RETURNING *`,
             [userID]
     );
 

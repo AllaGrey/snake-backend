@@ -1,16 +1,15 @@
 const { ctrlWrapper } = require("../../helpers"); 
+const { getLastGame } = require('../../services/games');
 
 const getCurrentGame = async (req, res) => {
 
-    // const {user_name: name, user_email: email, token} = req.user
+    const { user_id: id } = req.user;
 
-    // res.status(200).json({
-    //     user: {
-    //         name,
-    //         email
-    //     },
-    //     token
-    // });
+    const currentGame = await getLastGame(id);
+
+    res.status(200).json({
+        currentGame
+    });
 };
 
 module.exports = {

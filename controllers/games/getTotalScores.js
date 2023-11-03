@@ -1,16 +1,17 @@
 const { ctrlWrapper } = require("../../helpers"); 
+const { getScores, getUserMaxScore } = require('../../services/games');
 
 const getTotalScores = async (req, res) => {
 
-    // const {user_name: name, user_email: email, token} = req.user
+    const { user_id: id } = req.user;
 
-    // res.status(200).json({
-    //     user: {
-    //         name,
-    //         email
-    //     },
-    //     token
-    // });
+    const topScores = await getScores();
+    const userMaxScore = await getUserMaxScore(id);
+
+    res.status(200).json({
+        userMaxScore,
+        topScores
+    });
 };
 
 module.exports = {

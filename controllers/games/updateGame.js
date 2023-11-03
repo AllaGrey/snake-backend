@@ -1,16 +1,16 @@
-const { ctrlWrapper } = require("../../helpers"); 
+const { ctrlWrapper } = require("../../helpers");
+const { updateCurrentGame } = require('../../services/games');
 
 const updateGame = async (req, res) => {
 
-    // const {user_name: name, user_email: email, token} = req.user
+    const { user_id: userID } = req.user;
+    const { game } = req;
 
-    // res.status(200).json({
-    //     user: {
-    //         name,
-    //         email
-    //     },
-    //     token
-    // });
+    const updatedGame = await updateCurrentGame(game, userID);
+
+    res.status(200).json({
+        updatedGame
+    });
 };
 
 module.exports = {
