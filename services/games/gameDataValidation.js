@@ -2,7 +2,7 @@ const Joi = require("joi");
 
 const gameDataValidation = (data) => {
     return Joi.object().options({ abortEarly: false }).keys({
-        id: Joi.number().integer().greater(0).required().messages({
+        game_id: Joi.number().integer().greater(0).required().messages({
             'number.base': 'The id field must be a number',
             'any.required': 'The id field is required',
             'number.negative': 'The id field must be greater then 0',
@@ -65,11 +65,15 @@ const gameDataValidation = (data) => {
             'any.only': 'The direction field must be one of "UP", "DOWN", "LEFT", or "RIGHT"',
             'any.required': 'The direction field is required',
         }),
-        foodEatenCount: Joi.number().integer().required().messages({
+        eaten_food: Joi.number().integer().required().messages({
             'number.base': 'The score field must be a number',
             'any.required': 'The score field is required',
             'number.integer': 'The score field must be an integer',
         }),
+        fk_user_id: Joi.string().required().messages({
+            'string.base': 'The fk_user_id field must be a string',
+            'any.required': 'The fk_user_id field is required',
+        })
     })
         .validate(data)    
 }
