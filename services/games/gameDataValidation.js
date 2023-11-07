@@ -73,6 +73,10 @@ const gameDataValidation = (data) => {
         fk_user_id: Joi.string().required().messages({
             'string.base': 'The fk_user_id field must be a string',
             'any.required': 'The fk_user_id field is required',
+        }),
+        date: Joi.date().required().messages({
+            'date.base': 'The date field must be a valid date',
+            'any.required': 'The date field is required',
         })
     })
         .validate(data)    
