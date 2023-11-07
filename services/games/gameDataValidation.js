@@ -8,10 +8,9 @@ const gameDataValidation = (data) => {
             'number.negative': 'The id field must be greater then 0',
             'number.integer': 'The id field must be an integer',
         }),
-        score: Joi.number().integer().greater(0).required().messages({
+        score: Joi.number().integer().required().messages({
             'number.base': 'The score field must be a number',
             'any.required': 'The score field is required',
-            'number.negative': 'The score field must be greater then 0',
             'number.integer': 'The score field must be an integer',
         }),
         level: Joi.number().integer().greater(0).required().messages({
@@ -26,11 +25,51 @@ const gameDataValidation = (data) => {
             'number.negative': 'The speed field must be greater then 0',
             'number.integer': 'The speed field must be an integer',
         }),
-        status: Joi.string().valid('in progress', 'finished').required().messages({
+        status: Joi.string().valid('in progress', 'paused', 'finished').required().messages({
             'string.base': 'The status field must be a string',
-            'any.only': 'The status field must be one of "in progress" or "finished"',
+            'any.only': 'The status field must be one of "in progress", "paused" or "finished"',
             'any.required': 'The status field is required'
-        })
+        }),
+        snake: Joi.array()
+            .items(
+                Joi.object({
+                    x: Joi.number().required().messages({
+                        'number.base': 'The x coordinate must be a number',
+                        'any.required': 'The x coordinate is required',
+                    }),
+                    y: Joi.number().required().messages({
+                        'number.base': 'The y coordinate must be a number',
+                        'any.required': 'The y coordinate is required',
+                    }),
+                })
+            )
+            .required().messages({
+                'array.base': 'The snake field must be an array',
+                'array.required': 'The snake field is required',
+            }),
+        food: Joi.object({
+            x: Joi.number().required().messages({
+                'number.base': 'The x coordinate must be a number',
+                'any.required': 'The x coordinate is required',
+            }),
+            y: Joi.number().required().messages({
+                'number.base': 'The y coordinate must be a number',
+                'any.required': 'The y coordinate is required',
+            }),
+        }).required().messages({
+            'object.base': 'The food field must be an object',
+            'object.required': 'The food field is required',
+        }),
+        direction: Joi.string().valid('UP', 'DOWN', 'LEFT', 'RIGHT').required().messages({
+            'string.base': 'The direction field must be a string',
+            'any.only': 'The direction field must be one of "UP", "DOWN", "LEFT", or "RIGHT"',
+            'any.required': 'The direction field is required',
+        }),
+        foodEatenCount: Joi.number().integer().required().messages({
+            'number.base': 'The score field must be a number',
+            'any.required': 'The score field is required',
+            'number.integer': 'The score field must be an integer',
+        }),
     })
         .validate(data)    
 }
