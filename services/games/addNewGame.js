@@ -2,7 +2,6 @@ const db = require('../../db');
 
 
 const addNewGame = async (userID) => {
-    // const {snakeCoords, s} = gameData
 
     const { rows } = await db.query(`
         INSERT INTO 

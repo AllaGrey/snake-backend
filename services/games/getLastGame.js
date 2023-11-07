@@ -3,7 +3,7 @@ const db = require('../../db')
 const getLastGame = async (userID) => {
 
     const { rows } = await db.query(`
-        SELECT game_id, date, score, level, speed, status, fk_user_id
+        SELECT *
         FROM games
         WHERE fk_user_id=$1 
             AND 
