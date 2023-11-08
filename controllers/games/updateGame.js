@@ -8,9 +8,9 @@ const updateGame = async (req, res) => {
 
     const updatedGame = await updateCurrentGame(game, userID);
 
-    res.status(200).json({
+    res.status(200).json(
         updatedGame
-    });
+    );
 };
 
 module.exports = {
