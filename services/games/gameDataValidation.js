@@ -66,9 +66,9 @@ const gameDataValidation = (data) => {
             'any.required': 'The direction field is required',
         }),
         eaten_food: Joi.number().integer().required().messages({
-            'number.base': 'The score field must be a number',
-            'any.required': 'The score field is required',
-            'number.integer': 'The score field must be an integer',
+            'number.base': 'The eaten_food field must be a number',
+            'any.required': 'The eaten_food field is required',
+            'number.integer': 'The eaten_food field must be an integer',
         }),
         fk_user_id: Joi.string().required().messages({
             'string.base': 'The fk_user_id field must be a string',

@@ -2,7 +2,7 @@ const db = require('../../db')
 
 const updateCurrentGame = async (data, userID) => {
 
-    const { score, level, speed, status, id, snake, food, eaten_food, direction} = data;
+    const { score, level, speed, status, game_id, snake, food, eaten_food, direction } = data;
 
     const { rows } = await db.query(`
         UPDATE games
@@ -11,8 +11,8 @@ const updateCurrentGame = async (data, userID) => {
         WHERE game_id=$9 
             AND 
                 fk_user_id=$10
-        RETURNING game_id, date, score, level, speed, status, fk_user_id ;`,
-            [score, level, speed, status, snake, food, eaten_food, direction, id, userID ]
+        RETURNING score, level, speed, status, game_id, snake, food, eaten_food, direction, fk_user_id `,
+            [score, level, speed, status, snake, food, eaten_food, direction, game_id, userID ]
     );
 
     const updatedGame = rows[0];
