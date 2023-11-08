@@ -7,9 +7,9 @@ const getCurrentGame = async (req, res) => {
 
     const currentGame = await getLastGame(id);
 
-    res.status(200).json({
+    res.status(200).json(
         currentGame
-    });
+    );
 };
 
 module.exports = {

@@ -7,9 +7,9 @@ const addGame = async (req, res) => {
 
     const newGame = await addNewGame(id);
 
-    res.status(200).json({
+    res.status(200).json(
         newGame
-    });
+    );
 };
 
 module.exports = {
