@@ -11,7 +11,7 @@ const updateCurrentGame = async (data, userID) => {
         WHERE game_id=$9 
             AND 
                 fk_user_id=$10
-        RETURNING score, level, speed, status, game_id, snake, food, eaten_food, direction, fk_user_id `,
+        RETURNING score, date, level, speed, status, game_id, snake, food, eaten_food, direction, fk_user_id `,
             [score, level, speed, status, snake, food, eaten_food, direction, game_id, userID ]
     );
 
