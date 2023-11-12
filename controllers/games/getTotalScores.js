@@ -8,10 +8,10 @@ const getTotalScores = async (req, res) => {
     const topScores = await getScores();
     const userMaxScore = await getUserMaxScore(id);
 
-    res.status(200).json(
+    res.status(200).json({
         userMaxScore,
         topScores
-    );
+    });
 };
 
 module.exports = {
