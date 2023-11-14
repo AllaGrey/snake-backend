@@ -17,7 +17,7 @@ const authenticate = async (req, res, next) => {
     try {
         const { id, exp } = await jwt.verify(token, SECRET_KEY_TOKEN);
         if (exp*1000 < Date.now()) next(HttpError(401, "Not authorized"));
-console.log(id);
+
         const { rows } = await db.query(`
             SELECT user_id, user_name, user_email, token
             FROM users

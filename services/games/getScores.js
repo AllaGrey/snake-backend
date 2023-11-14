@@ -1,6 +1,6 @@
 const db = require('../../db');
 
-const getScores = async (userID) => {
+const getScores = async () => {
     const { rows } = await db.query(`            
         SELECT users.user_name AS user, games.score
         FROM games
