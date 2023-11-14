@@ -9,10 +9,10 @@ const getUserMaxScore = async (userID) => {
             [userID]
     );
 
-    let scores = rows[0].score;
+    let scores;
 
-    if(!scores) scores = 0
-    
+    rows.length > 0 ? scores = rows[0].score : scores = 0
+
     return scores;
 }
 
